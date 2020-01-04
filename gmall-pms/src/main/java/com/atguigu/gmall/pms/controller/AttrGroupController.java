@@ -10,6 +10,7 @@ import com.atguigu.core.bean.Resp;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,15 @@ import com.atguigu.gmall.pms.service.AttrGroupService;
 public class AttrGroupController {
     @Autowired
     private AttrGroupService attrGroupService;
+
+    @ApiOperation("根据三级分类id分页查询")
+    @GetMapping("{catId}")
+    public Resp<PageVo> queryGroupsByCidPage(QueryCondition queryCondition, @PathVariable("catId")Long catId) {
+        PageVo page = attrGroupService.queryGroupsByCidPage(queryCondition, catId);
+
+        return Resp.ok(page);
+    }
+
 
     /**
      * 列表
