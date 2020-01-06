@@ -12,7 +12,7 @@ import java.util.function.BiFunction;
 public class SkuInfoVO extends SkuInfoEntity {
     private BigDecimal growBounds;
     private BigDecimal buyBounds;
-    private List<String> work;
+    private List<Integer> work;
 
     private BigDecimal fullPrice;
     private BigDecimal reducePrice;

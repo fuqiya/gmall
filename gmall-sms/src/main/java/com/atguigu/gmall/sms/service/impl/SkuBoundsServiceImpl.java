@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -49,9 +49,9 @@ public class SkuBoundsServiceImpl extends ServiceImpl<SkuBoundsDao, SkuBoundsEnt
         SkuBoundsEntity skuBoundsEntity = new SkuBoundsEntity();
         BeanUtils.copyProperties(saleVO,skuBoundsEntity);
         List<Integer> works = saleVO.getWork();
-        if (!CollectionUtils.isEmpty(works)){
-            skuBoundsEntity.setWork(works.get(0) + works.get(1)*2 + works.get(2)*4 + works.get(3)*8);
-        }
+        //skuBoundsEntity.setWork(new Integer(works.get(0)) + new Integer(works.get(1)) * 2 + new Integer(works.get(2)) * 4 + new Integer(works.get(3)) * 8);
+        skuBoundsEntity.setWork(works.get(0) + works.get(1)+ works.get(2) + works.get(3) * 8);
+        this.save(skuBoundsEntity);
         //3.2 skuLadder打折
         SkuLadderEntity skuLadderEntity = new SkuLadderEntity();
         BeanUtils.copyProperties(saleVO,skuLadderEntity);
