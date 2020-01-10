@@ -21,6 +21,7 @@ import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.gmall.sms.dao.SkuBoundsDao;
 import com.atguigu.gmall.sms.entity.SkuBoundsEntity;
 import com.atguigu.gmall.sms.service.SkuBoundsService;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 
@@ -43,6 +44,7 @@ public class SkuBoundsServiceImpl extends ServiceImpl<SkuBoundsDao, SkuBoundsEnt
         return new PageVo(page);
     }
 
+    @Transactional
     @Override
     public void saveSales(SaleVO saleVO) {
         //3.1 skuBounds积分
@@ -50,7 +52,7 @@ public class SkuBoundsServiceImpl extends ServiceImpl<SkuBoundsDao, SkuBoundsEnt
         BeanUtils.copyProperties(saleVO,skuBoundsEntity);
         List<Integer> works = saleVO.getWork();
         //skuBoundsEntity.setWork(new Integer(works.get(0)) + new Integer(works.get(1)) * 2 + new Integer(works.get(2)) * 4 + new Integer(works.get(3)) * 8);
-        skuBoundsEntity.setWork(works.get(0) + works.get(1)+ works.get(2) + works.get(3) * 8);
+        skuBoundsEntity.setWork(works.get(0) * 8 + works.get(1) * 4+ works.get(2) * 2+ works.get(3));
         this.save(skuBoundsEntity);
         //3.2 skuLadder打折
         SkuLadderEntity skuLadderEntity = new SkuLadderEntity();

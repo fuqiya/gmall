@@ -1,6 +1,7 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -34,6 +35,12 @@ import com.atguigu.gmall.pms.service.SpuInfoService;
 public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
+
+    public Resp<List<SpuInfoEntity>> querySpusByPage(@RequestBody QueryCondition queryCondition) {
+        PageVo page = spuInfoService.queryPage(queryCondition);
+        List<SpuInfoEntity> list = (List<SpuInfoEntity>) page.getList();
+        return Resp.ok(list);
+    }
 
     @ApiOperation("spu商品信息查询")
     @GetMapping
