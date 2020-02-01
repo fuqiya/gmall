@@ -16,5 +16,7 @@
         <result property="productCount" column="product_count"/>
     </resultMap>
 
-
+    <select id="querySubCategory" resultMap="categoryMap">
+        select * from pms_category where parent_cid = #{pid}
+    </select>
 </mapper>

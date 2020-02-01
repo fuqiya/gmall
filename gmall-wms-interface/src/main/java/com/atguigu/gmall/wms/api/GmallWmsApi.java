@@ -1,4 +1,4 @@
-package com.atguigu.gmall.wms.feign;
+package com.atguigu.gmall.wms.api;
 
 import com.atguigu.core.bean.Resp;
 import com.atguigu.gmall.wms.entity.WareSkuEntity;

@@ -49,4 +49,10 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         return this.categoryDao.selectList(wrapper);
     }
 
+    @Override
+    public List<CategoryEntity> querySubCategory(Long pid) {
+        List<CategoryEntity> categoryEntities = this.categoryDao.querySubCategory(pid);
+        return categoryEntities;
+    }
+
 }

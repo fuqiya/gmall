@@ -50,7 +50,7 @@ class GmallSearchApplicationTests {
             queryCondition.setPage(pageNum);
             queryCondition.setLimit(pageSize);
             // 分页查询spu
-            Resp<List<SpuInfoEntity>> listResp = this.pmsClient.querySpusByPage(queryCondition);
+            Resp<List<SpuInfoEntity>> listResp = this.pmsClient.querySpuByPage(queryCondition);
             List<SpuInfoEntity> spuInfoEntities = listResp.getData();
             // 判断spu是否为空
             if (CollectionUtils.isEmpty(spuInfoEntities)){
@@ -59,7 +59,7 @@ class GmallSearchApplicationTests {
 
             // 遍历spu，获取sku导入es
             spuInfoEntities.forEach(spuInfoEntity -> {
-                Resp<List<SkuInfoEntity>> skuResp = this.pmsClient.querySkusBySpuId(spuInfoEntity.getId());
+                Resp<List<SkuInfoEntity>> skuResp = this.pmsClient.querySkuBySpuId(spuInfoEntity.getId());
                 List<SkuInfoEntity> skuInfoEntities = skuResp.getData();
                 if (!CollectionUtils.isEmpty(skuInfoEntities)) {
                     List<Goods> goodsList = skuInfoEntities.stream().map(skuInfoEntity -> {

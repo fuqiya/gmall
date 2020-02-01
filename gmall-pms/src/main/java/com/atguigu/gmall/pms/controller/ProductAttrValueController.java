@@ -36,8 +36,12 @@ public class ProductAttrValueController {
     private ProductAttrValueService productAttrValueService;
 
     @ApiOperation("根据spuId查询检索属性及值")
-    @GetMapping("/{spuId}")
-    public Resp<List<ProductAttrValueEntity>> querySearchAttrValueBySpuId(@PathVariable("spuId"))
+    @GetMapping("{spuId}")
+    public Resp<List<ProductAttrValueEntity>> querySearchAttrValue(@PathVariable("spuId")Long spuId){
+        List<ProductAttrValueEntity> attrValueEntities = this.productAttrValueService.querySearchAttrValue(spuId);
+
+        return Resp.ok(attrValueEntities);
+    }
 
     /**
      * 列表

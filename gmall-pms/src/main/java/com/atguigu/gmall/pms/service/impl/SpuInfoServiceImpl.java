@@ -104,6 +104,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         // 2. sku相关信息
         this.saveSkuAndSales(spuInfoVO,spuId);
     }
+
     public void saveSkuAndSales(SpuInfoVO spuInfoVO,Long spuId) {
         List<SkuInfoVO> skus = spuInfoVO.getSkus();
         if (CollectionUtils.isEmpty(skus)) {
