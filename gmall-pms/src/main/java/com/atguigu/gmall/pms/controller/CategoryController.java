@@ -8,6 +8,7 @@ import java.util.Map;
 import com.atguigu.core.bean.PageVo;
 import com.atguigu.core.bean.QueryCondition;
 import com.atguigu.core.bean.Resp;
+import com.atguigu.gmall.pms.vo.CategoryVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +37,9 @@ public class CategoryController {
 
     @ApiOperation("父id查询二级分类及其子分类")
     @GetMapping("{pid}")
-    public Resp<List<CategoryEntity>> querySubCategory(@PathVariable("pid")Long pid) {
-        List<CategoryEntity> categoryEntityList = this.categoryService.querySubCategory(pid);
-        return Resp.ok(categoryEntityList);
+    public Resp<List<CategoryVO>> queryCategoriesWithSub(@PathVariable("pid")Long pid){
+        List<CategoryVO> categoryVOS = this.categoryService.queryCategoriesWithSub(pid);
+        return Resp.ok(categoryVOS);
     }
 
     @ApiOperation("根据分类等级或者父id查询分类")

@@ -1,6 +1,7 @@
 package com.atguigu.gmall.pms.dao;
 
 import com.atguigu.gmall.pms.entity.CategoryEntity;
+import com.atguigu.gmall.pms.vo.CategoryVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,5 +17,5 @@ import java.util.List;
 @Mapper
 public interface CategoryDao extends BaseMapper<CategoryEntity> {
 
-    List<CategoryEntity> querySubCategory(Long pid);
+    List<CategoryVO> queryCategoriesWithSub(Long pid);
 }

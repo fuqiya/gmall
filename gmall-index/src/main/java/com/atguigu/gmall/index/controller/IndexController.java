@@ -3,6 +3,7 @@ package com.atguigu.gmall.index.controller;
 import com.atguigu.core.bean.Resp;
 import com.atguigu.gmall.index.service.IndexService;
 import com.atguigu.gmall.pms.entity.CategoryEntity;
+import com.atguigu.gmall.pms.vo.CategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,8 +26,8 @@ public class IndexController {
     }
 
     @GetMapping("cates/{pid}")
-    public Resp<List<CategoryEntity>> querySubCategories(@PathVariable("pid")Long pid) {
-        List<CategoryEntity> categoryEntities = this.indexService.querySubCategories(pid);
+    public Resp<List<CategoryVO>> querySubCategories(@PathVariable("pid")Long pid) {
+        List<CategoryVO> categoryEntities = this.indexService.queryCategoriesWithSub(pid);
         return Resp.ok(categoryEntities);
     }
 
